@@ -227,7 +227,7 @@ const Hero = () => {
             <span className="text-blue-900">An innovative SBO project</span>
           </h1>
           <p className="text-xl text-slate-600 leading-relaxed mb-8 max-w-xl">
-            Bridging the gap between fundamental light physics and scalable industrial hardware. Founded at the Photonics Research Group, Ghent University. This is a test
+            Bridging the gap between fundamental light physics and scalable industrial hardware. Founded at the Photonics Research Group, Ghent University. This is not a test
           </p>
           <div className="flex flex-wrap gap-4">
             <a href="#objectives" className="px-8 py-4 bg-blue-900 text-white rounded-lg font-bold hover:bg-blue-800 transition-colors flex items-center gap-2">
