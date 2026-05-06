@@ -455,13 +455,14 @@ const ConsortiumSection = () => {
             <div className="relative w-full max-w-sm">
               <div className="absolute -inset-4 bg-blue-100 rounded-3xl -rotate-2" />
               <img 
-                src="/input_file_0.png" 
+                src="https://lh3.googleusercontent.com/d/1w0dR8Z5WceLbY9VYlCihBRUfU4wVMu4s" 
                 alt="Project Leader" 
                 referrerPolicy="no-referrer"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  // fallback to a high quality lab image
-                  target.src = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800";
+                  if (!target.src.includes('unsplash.com')) {
+                    target.src = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800";
+                  }
                 }}
                 className="relative rounded-2xl shadow-xl w-full aspect-square object-cover"
               />
