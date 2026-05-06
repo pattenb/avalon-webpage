@@ -139,28 +139,16 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
               href={link.href} 
-              className="text-sm font-medium text-slate-600 hover:text-blue-900 transition-colors"
+              className="text-base font-semibold text-slate-600 hover:text-blue-900 transition-colors"
             >
               {link.name}
             </a>
           ))}
-          <div className="flex items-center gap-4 pl-4 border-l border-slate-200">
-             {/* Text-based Logos for UGent and FWO */}
-             <div className="flex flex-col items-center">
-               <span className="text-[10px] font-bold text-blue-800 leading-none">UGENT</span>
-               <div className="h-[1px] w-full bg-blue-800 my-[2px]"></div>
-               <span className="text-[8px] font-bold text-blue-800 leading-none">PHOTONICS</span>
-             </div>
-             <div className="flex flex-col items-center border-l border-slate-200 pl-4">
-               <span className="text-[10px] font-bold text-blue-900 leading-none">fwo</span>
-               <span className="text-[8px] text-slate-500 leading-none">Flanders</span>
-             </div>
-          </div>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -233,8 +221,8 @@ const Hero = () => {
             <a href="#objectives" className="px-8 py-4 bg-blue-900 text-white rounded-lg font-bold hover:bg-blue-800 transition-colors flex items-center gap-2">
               Explore Our Objectives <ChevronRight size={18} />
             </a>
-            <a href="#collaboration" className="px-8 py-4 bg-white text-blue-900 border border-blue-200 rounded-lg font-bold hover:border-blue-400 transition-all">
-              Partner With Us
+            <a href="#consortium" className="px-8 py-4 bg-white text-blue-900 border border-blue-200 rounded-lg font-bold hover:border-blue-400 transition-all">
+              Explore Our Partners
             </a>
           </div>
         </motion.div>
@@ -353,14 +341,8 @@ const PARTNERS = [
   {
     name: 'IMO-IMOMEC',
     url: 'https://www.uhasselt.be/imo-imomec',
-    logo: '/input_file_4.png',
-    fallback: 'https://www.uhasselt.be/media/3vclsn3r/imo-imomec-logo-rgb.jpg'
-  },
-  {
-    name: 'University of Antwerp',
-    url: 'https://www.uantwerpen.be',
-    logo: 'https://logo.clearbit.com/uantwerpen.be',
-    fallback: 'https://upload.wikimedia.org/wikipedia/en/thumb/0/00/University_of_Antwerp_logo.svg/512px-University_of_Antwerp_logo.svg.png'
+    logo: 'https://lh3.googleusercontent.com/d/1_phO1RwHTaq9uuvSvU2Ba1nlqODSToRS',
+    fallback: '/input_file_4.png'
   },
   {
     name: 'FWO',
@@ -380,9 +362,9 @@ const PartnerLogo = ({ partner }: { partner: typeof PARTNERS[0] }) => {
   }, [partner.logo]);
   
   return (
-    <div className="h-24 w-full flex items-center justify-center p-4 bg-white/50 backdrop-blur-sm rounded-2xl border border-slate-100/50 hover:bg-white hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-500 group">
+    <div className="h-40 w-full flex items-center justify-center p-6 bg-white/50 backdrop-blur-sm rounded-2xl border border-slate-100/50 hover:bg-white hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-500 group">
       {errorCount >= 2 ? (
-        <div className="px-4 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center leading-tight">
+        <div className="px-4 py-2 text-xs font-bold text-slate-400 uppercase tracking-widest text-center leading-tight">
           {partner.name}
         </div>
       ) : (
@@ -398,7 +380,7 @@ const PartnerLogo = ({ partner }: { partner: typeof PARTNERS[0] }) => {
               setErrorCount(2);
             }
           }}
-          className="max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105"
+          className="max-h-full max-w-full object-contain transition-all duration-500 transform group-hover:scale-110"
         />
       )}
     </div>
@@ -415,7 +397,7 @@ const ConsortiumSection = () => {
           <p className="mt-4 text-slate-600">A collaborative network of leading academic and industrial research groups.</p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center justify-items-center mb-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-center justify-items-center mb-32">
           {PARTNERS.map((partner, idx) => (
             <motion.a 
               key={partner.name}
@@ -534,24 +516,33 @@ const PublicationsSection = () => {
 
 const RepositorySection = () => {
   return (
-    <section id="repository" className="py-24 bg-slate-900 text-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center gap-4 mb-8">
-          <Layers className="w-10 h-10 text-blue-400" />
-          <h2 className="text-4xl font-bold">Document Repository</h2>
+    <section id="repository" className="py-24 bg-slate-900 text-white overflow-hidden relative">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl -mr-48 -mt-48" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl -ml-48 -mb-48" />
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
+        <div className="flex flex-col items-center mb-12">
+          <div className="p-4 bg-blue-600/20 rounded-2xl mb-6">
+            <Layers className="w-12 h-12 text-blue-400" />
+          </div>
+          <h2 className="text-4xl font-bold mb-4">Document Repository</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
+            Access project reports, data sets, and internal documentation for consortium members and researchers via our secure Microsoft Teams platform.
+          </p>
         </div>
-        <p className="text-slate-400 mb-12 max-w-2xl">
-          Access project reports, data sets, and internal documentation for consortium members and researchers.
-        </p>
-        <div className="grid md:grid-cols-3 gap-6">
-          {['Technical Reports', 'Annual Reviews', 'Software Tools'].map(item => (
-            <div key={item} className="p-8 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors">
-              <h4 className="text-xl font-bold mb-4">{item}</h4>
-              <button className="text-sm font-bold text-blue-400 flex items-center gap-2">
-                Browse Files <ChevronRight size={14} />
-              </button>
-            </div>
-          ))}
+
+        <div className="flex justify-center">
+          <motion.a 
+            href="https://teams.microsoft.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center gap-4 px-10 py-5 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-bold text-xl shadow-2xl shadow-blue-600/20 transition-all group"
+          >
+            Access Repository on Teams
+            <ExternalLink size={24} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </motion.a>
         </div>
       </div>
     </section>
@@ -648,6 +639,24 @@ const Footer = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Consortium Logos in Footer */}
+        <div className="flex flex-wrap items-center justify-center gap-8 mb-10 pt-10 border-t border-slate-200">
+          {PARTNERS.map((partner) => (
+            <div key={`footer-${partner.name}`} className="h-10 w-20 flex items-center justify-center transition-all duration-300">
+              <img 
+                src={partner.logo} 
+                alt={partner.name} 
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  if (partner.fallback) target.src = partner.fallback;
+                }}
+                className="max-h-full max-w-full object-contain"
+              />
+            </div>
+          ))}
         </div>
 
         <div className="pt-10 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
