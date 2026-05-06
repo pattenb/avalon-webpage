@@ -189,16 +189,79 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-slate-50">
       {/* Background patterns */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
-          <svg viewBox="0 0 100 100" className="w-full h-full text-blue-900">
-            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-            </pattern>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-        </div>
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50" />
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* Photonic Circuit Style Background */}
+        <svg className="absolute top-0 right-0 w-[1000px] h-full opacity-[0.12] text-blue-900 overflow-visible" viewBox="0 0 400 400">
+          {/* Main Waveguides */}
+          <path d="M 0,50 Q 150,50 150,150 L 150,400" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
+          <path d="M 50,0 L 50,100 Q 50,200 250,200 L 400,200" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <path d="M 100,0 Q 100,150 300,150 Q 400,150 400,100" fill="none" stroke="currentColor" strokeWidth="1.2" strokeDasharray="10 5" />
+          <path d="M 200,400 L 200,300 Q 200,250 350,250 L 400,250" fill="none" stroke="currentColor" strokeWidth="2" />
+          
+          {/* Secondary Braided Waveguides */}
+          <path d="M 300,0 L 300,50 Q 300,120 180,120 L 0,120" fill="none" stroke="currentColor" strokeWidth="0.8" opacity="0.5" />
+          <path d="M 0,280 L 100,280 Q 180,280 180,350 L 180,400" fill="none" stroke="currentColor" strokeWidth="0.8" opacity="0.5" />
+          <path d="M 400,320 L 320,320 Q 260,320 260,380 L 260,400" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="2 2" opacity="0.4" />
+
+          {/* Resonators / Ring Modulators */}
+          <circle cx="150" cy="150" r="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 1" opacity="0.4" />
+          <circle cx="250" cy="200" r="12" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="3 2" opacity="0.3" />
+          <circle cx="50" cy="150" r="10" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.2" />
+
+          {/* 光脉冲 (Light Pulses) */}
+          <motion.circle
+            r="3.5"
+            fill="#3b82f6"
+            initial={{ offsetDistance: "0%" }}
+            animate={{ offsetDistance: "100%" }}
+            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+            style={{ offsetPath: "path('M 50,0 L 50,100 Q 50,200 250,200 L 400,200')" }}
+          />
+          <motion.circle
+            r="2"
+            fill="#60a5fa"
+            initial={{ offsetDistance: "0%" }}
+            animate={{ offsetDistance: "100%" }}
+            transition={{ duration: 7, repeat: Infinity, ease: "linear", delay: 2 }}
+            style={{ offsetPath: "path('M 200,400 L 200,300 Q 200,250 350,250 L 400,250')" }}
+          />
+          <motion.circle
+            r="2.5"
+            fill="#1d4ed8"
+            initial={{ offsetDistance: "0%" }}
+            animate={{ offsetDistance: "100%" }}
+            transition={{ duration: 6, repeat: Infinity, ease: "linear", delay: 1 }}
+            style={{ offsetPath: "path('M 0,50 Q 150,50 150,150 L 150,400')" }}
+          />
+          <motion.circle
+            r="1.5"
+            fill="#93c5fd"
+            initial={{ offsetDistance: "0%" }}
+            animate={{ offsetDistance: "100%" }}
+            transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: 3 }}
+            style={{ offsetPath: "path('M 300,0 L 300,50 Q 300,120 180,120 L 0,120')" }}
+          />
+
+          {/* Junction Nodes */}
+          <rect x="45" y="95" width="10" height="10" fill="currentColor" opacity="0.3" rx="2" />
+          <rect x="145" y="145" width="10" height="10" fill="currentColor" opacity="0.3" rx="2" />
+          <circle cx="250" cy="200" r="4" fill="#3b82f6" opacity="0.6" />
+          <circle cx="350" cy="250" r="4" fill="currentColor" opacity="0.4" />
+          <rect x="175" y="345" width="10" height="10" fill="currentColor" opacity="0.3" rx="2" />
+          
+          {/* Interference / Diffraction Brushes */}
+          {[...Array(5)].map((_, i) => (
+            <line 
+              key={i}
+              x1={380 + i*4} y1="0" x2={380 + i*4} y2="400" 
+              stroke="currentColor" strokeWidth="0.5" opacity={0.1 - i*0.02} 
+            />
+          ))}
+        </svg>
+
+        {/* Ambient Glows */}
+        <div className="absolute -top-24 right-0 w-96 h-96 bg-blue-200 rounded-full blur-[120px] opacity-20" />
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-100 rounded-full blur-[100px] opacity-30" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
