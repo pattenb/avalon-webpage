@@ -247,17 +247,13 @@ const Hero = () => {
         >
           <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
             <img 
-              src="https://drive.google.com/uc?export=view&id=1pgtwJ0ve5R4k5EAxI21KJ1FyotCYBXPw" 
+              src="https://lh3.googleusercontent.com/d/1pgtwJ0ve5R4k5EAxI21KJ1FyotCYBXPw" 
               alt="Silicon Photonic Experiment" 
               referrerPolicy="no-referrer"
               className="w-full h-[500px] object-cover"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                if (target.src.includes('drive.google.com')) {
-                  // try the local upload as second option
-                  target.src = "/input_file_7.png";
-                } else if (target.src.includes('input_file_7.png')) {
-                  // last resort: unsplash
+                if (!target.src.includes('unsplash.com')) {
                   target.src = "https://images.unsplash.com/photo-1544256718-3bcf237f3974?auto=format&fit=crop&q=80&w=1200";
                 }
               }}
@@ -333,25 +329,25 @@ const PARTNERS = [
   {
     name: 'imec',
     url: 'https://www.imec-int.com',
-    logo: 'https://drive.google.com/uc?id=1wfQOrH_4R6Gc7F6xZLsuSkBZLTcQ90G3',
+    logo: 'https://lh3.googleusercontent.com/d/1wfQOrH_4R6Gc7F6xZLsuSkBZLTcQ90G3',
     fallback: '/input_file_6.png'
   },
   {
     name: 'Ghent University',
     url: 'https://www.ugent.be',
-    logo: 'https://drive.google.com/uc?id=1k_IgKqJc9ZA7eCkwoEm8BY8JYlbly2Iw',
+    logo: 'https://lh3.googleusercontent.com/d/1k_IgKqJc9ZA7eCkwoEm8BY8JYlbly2Iw',
     fallback: '/input_file_3.png'
   },
   {
     name: 'KU Leuven',
     url: 'https://www.kuleuven.be',
-    logo: 'https://drive.google.com/uc?id=19qu8WLbpWo3zjEeeAS2LHoIV9Pf2lBAz',
+    logo: 'https://lh3.googleusercontent.com/d/19qu8WLbpWo3zjEeeAS2LHoIV9Pf2lBAz',
     fallback: '/input_file_5.png'
   },
   {
     name: 'UHasselt',
     url: 'https://www.uhasselt.be',
-    logo: 'https://drive.google.com/uc?id=1__swiiNmjw9_bxTCYCVA2wooKEBih0U4',
+    logo: 'https://lh3.googleusercontent.com/d/1__swiiNmjw9_bxTCYCVA2wooKEBih0U4',
     fallback: '/input_file_2.png'
   },
   {
@@ -369,7 +365,7 @@ const PARTNERS = [
   {
     name: 'FWO',
     url: 'https://www.fwo.be',
-    logo: 'https://drive.google.com/uc?id=15q-JLYBLmD8IFuMUDTjR2QPIslFNOyVM',
+    logo: 'https://lh3.googleusercontent.com/d/15q-JLYBLmD8IFuMUDTjR2QPIslFNOyVM',
     fallback: '/input_file_1.png'
   }
 ];
