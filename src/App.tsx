@@ -377,27 +377,29 @@ const ObjectivesSection = () => {
 };
 
 const PARTNERS = [
+  
   {
-    name: 'imec',
-    url: 'https://www.imec-int.com',
+    name: 'Ghent University',
+    url: 'https://www.ugent.be/en',
     logo: 'https://lh3.googleusercontent.com/d/1wfQOrH_4R6Gc7F6xZLsuSkBZLTcQ90G3',
     fallback: '/input_file_6.png'
   },
   {
-    name: 'Ghent University',
-    url: 'https://www.ugent.be',
+    name: 'FWO',
+    url: 'https://www.fwo.be/en/',
     logo: 'https://lh3.googleusercontent.com/d/1k_IgKqJc9ZA7eCkwoEm8BY8JYlbly2Iw',
     fallback: '/input_file_3.png'
   },
+  
   {
-    name: 'KU Leuven',
-    url: 'https://www.kuleuven.be',
+    name: 'imec',
+    url: 'https://www.imec-int.com/en/expertise/photonics',
     logo: 'https://lh3.googleusercontent.com/d/19qu8WLbpWo3zjEeeAS2LHoIV9Pf2lBAz',
     fallback: '/input_file_5.png'
   },
   {
-    name: 'UHasselt',
-    url: 'https://www.uhasselt.be',
+    name: 'KU Leuven',
+    url: 'https://www.esat.kuleuven.be/micas',
     logo: 'https://lh3.googleusercontent.com/d/1__swiiNmjw9_bxTCYCVA2wooKEBih0U4',
     fallback: '/input_file_2.png'
   },
@@ -408,8 +410,8 @@ const PARTNERS = [
     fallback: '/input_file_4.png'
   },
   {
-    name: 'FWO',
-    url: 'https://www.fwo.be',
+    name: 'UHasselt',
+    url: 'https://www.uhasselt.be',
     logo: 'https://lh3.googleusercontent.com/d/15q-JLYBLmD8IFuMUDTjR2QPIslFNOyVM',
     fallback: '/input_file_1.png'
   }
@@ -707,7 +709,13 @@ const Footer = () => {
         {/* Consortium Logos in Footer */}
         <div className="flex flex-wrap items-center justify-center gap-8 mb-10 pt-10 border-t border-slate-200">
           {PARTNERS.map((partner) => (
-            <div key={`footer-${partner.name}`} className="h-10 w-20 flex items-center justify-center transition-all duration-300">
+            <a 
+              key={`footer-${partner.name}`} 
+              href={partner.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-10 w-20 flex items-center justify-center transition-all duration-300 hover:scale-110"
+            >
               <img 
                 src={partner.logo} 
                 alt={partner.name} 
@@ -718,7 +726,7 @@ const Footer = () => {
                 }}
                 className="max-h-full max-w-full object-contain"
               />
-            </div>
+            </a>
           ))}
         </div>
 
